@@ -3,65 +3,12 @@ package com.example.demo.pagination;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 
 import com.example.demo.bean.Persons;
 import com.example.demo.repository.PersonsRepository;
-
-
-/*
-    Resolve due to @Autowired lead to NullPointerException problem
-
-    Description：
-    1. It's limited to general class to invoke spring bean Object.
-    2. And This makes the sub package easy to scan by spring boot.
-
-                                                      ———— @Boyle.gu
-*/
-@Component
-class SpringUtil implements ApplicationContextAware {
-
-    private static ApplicationContext applicationContext = null;
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-
-        if (SpringUtil.applicationContext == null) {
-
-            SpringUtil.applicationContext = applicationContext;
-
-        }
-    }
-
-    public static ApplicationContext getApplicationContext() {
-
-        return applicationContext;
-
-    }
-
-    public static Object getBean(String name) {
-
-        return getApplicationContext().getBean(name);
-
-    }
-
-    public static <T> T getBean(Class<T> clazz) {
-
-        return getApplicationContext().getBean(clazz);
-
-    }
-
-    public static <T> T getBean(String name, Class<T> clazz) {
-
-        return getApplicationContext().getBean(name, clazz);
-
-    }
-}
+import com.example.demo.utils.SpringUtil;
 
 
 interface Types {
