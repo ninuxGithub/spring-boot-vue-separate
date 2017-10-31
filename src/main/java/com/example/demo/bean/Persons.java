@@ -87,4 +87,12 @@ public class Persons implements Serializable {
 	public void setZone(String zone) {
 		this.zone = zone;
 	}
+
+	@Override
+	public String toString() {
+		return "Persons [id=" + id + ", create_datetime=" + create_datetime + ", username=" + username + ", email="
+				+ email + ", phone=" + phone + ", sex=" + sex + ", zone=" + zone + "]";
+	}
+	
+	
 }

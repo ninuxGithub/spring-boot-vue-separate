@@ -83,9 +83,10 @@
         mounted () {
             this.getCustomers();
             Bus.$on('filterResultData', (data) => {
-                this.tableData = data.results;
-                this.total = data.total_pages;
-                this.pageSize = data.count;
+            	console.dir(data)
+                this.tableData = data.content;
+                this.total = data.totalElements;
+                this.pageSize = data.size;
                 this.email = data.email;
                 this.sex = data.sex;
 
@@ -93,7 +94,6 @@
         },
 
         methods: {
-
             dialogVisible: function () {
                 this.dialogFormVisible = false;
             },
@@ -106,15 +106,16 @@
                         email: this.email
                     }
                 }).then((response) => {
-                    this.tableData = response.data.data.results;
-                    this.total = response.data.data.total;
-                    this.pageSize = response.data.data.count;
-                    console.log(response.data.data);
+                	console.dir(response.data)
+                    this.tableData = response.data.content;
+                    this.total = response.data.totalElements;
+                    this.pageSize = response.data.size;
                 }).catch(function (response) {
                     console.log(response)
                 });
             },
             changePage: function (currentPage) {
+            	console.dir("yes")
                 this.currentPage = currentPage;
                 this.getCustomers()
             },

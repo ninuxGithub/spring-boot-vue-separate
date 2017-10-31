@@ -16,7 +16,9 @@
 	
 	boyle 的github 也有介绍请参考：https://github.com/boylegu/SpringBoot-vue
 
-	
+
+### 需要注意的地方
+	PageNumber：对jpa查询后的number进行了修正（默认是0 ，而前端页面需要的是1）
 	
 
 

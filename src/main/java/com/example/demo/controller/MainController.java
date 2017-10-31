@@ -2,14 +2,25 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +31,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.bean.PageNumber;
 import com.example.demo.bean.Persons;
-import com.example.demo.pagination.PaginationFormatting;
-import com.example.demo.pagination.PaginationMultiTypeValuesHelper;
 import com.example.demo.repository.PersonsRepository;
 
 @RestController
 @RequestMapping("/api/persons")
 public class MainController {
+
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
 	private PersonsRepository personsRepository;
@@ -37,7 +49,7 @@ public class MainController {
 
 	@RequestMapping(value = "/sex", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getSexAll() {
-
+		logger.info("getSexAll");
 		ArrayList<Map<String, String>> results = new ArrayList<>();
 
 		for (Object value : personsRepository.findSex()) {
@@ -56,24 +68,43 @@ public class MainController {
 		return responseEntity;
 	}
 
+
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, PaginationMultiTypeValuesHelper> getPersonsAll(
-			@RequestParam(value = "page", required = false) Integer pages, @RequestParam("sex") String sex,
-			@RequestParam("email") String email) {
-
-		if (pages == null) {
-
-			pages = 1;
-
+	public Page<Persons> jpaSearch(@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam("sex") final String sex, @RequestParam("email") final String email) {
+		logger.info("jpaSearch");
+		if (page == null) {
+			page = 1;
 		}
-
 		Sort sort = new Sort(Direction.ASC, "id");
 
-		Pageable pageable = new PageRequest(pages - 1, maxPerPage, sort);
+		Pageable pageable = new PageRequest(page - 1, maxPerPage, sort);
 
-		PaginationFormatting paginInstance = new PaginationFormatting();
+		Page<Persons> pagination =  personsRepository.findAll(new Specification<Persons>() {
+			@Override
+			public Predicate toPredicate(Root<Persons> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				List<Predicate> predicatList = new ArrayList<>();
+				if (StringUtils.isNotBlank(sex)) {
+					predicatList.add(cb.like(root.get("sex"), "%" + sex + "%"));
+				}
+				if (StringUtils.isNotBlank(email)) {
+					predicatList.add(cb.like(root.get("email"), "%" + email + "%"));
+				}
 
-		return paginInstance.filterQuery(sex, email, pageable);
+				Predicate[] arrayPredicates = new Predicate[predicatList.size()];
+				return cb.and(predicatList.toArray(arrayPredicates));
+			}
+		}, pageable);
+
+		System.out.println("num:" + pagination.getNumber());
+		System.out.println("size:" + pagination.getSize());
+		System.out.println("content:" + pagination.getContent());
+		System.out.println("total page:" + pagination.getTotalPages());
+		System.out.println("total Elements:" + pagination.getTotalElements());
+		System.out.println("hasNext:" + pagination.hasNext());
+
+		return new PageNumber<>(pagination.getContent(), pageable, pagination.getTotalElements());
+		
 	}
 
 	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
