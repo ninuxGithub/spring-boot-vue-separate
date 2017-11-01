@@ -61,7 +61,7 @@ public class UserController extends BaseAction {
 			sort = new Sort(direction, sortType);
 		}
 		logger.info("sort field :{}", sortType);
-		Pageable pageable = new PageRequest(page - 1, maxPerPage, sort);
+		Pageable pageable = new PageRequest(page - 1, perPage == null?maxPerPage:perPage, sort);
 		Page<User> pagination = null;
 		pagination = queryPagination(name, phone, username, pageable);
 		return new PageNumber<>(pagination.getContent(), pageable, pagination.getTotalElements());
