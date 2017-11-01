@@ -30,6 +30,10 @@
 	改用驼峰式的命名就好啦
 	
 	
+	和这个项目配套的前段项目可以是本项目的front
+	也可以是：https://github.com/ninuxGithub/vue-front-end
+	
+	
 ### 效果
 ![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)
 	
