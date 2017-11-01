@@ -30,7 +30,8 @@
 	改用驼峰式的命名就好啦
 	
 	
-	![img]()
+### 效果
+![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)
 	
 	
 
