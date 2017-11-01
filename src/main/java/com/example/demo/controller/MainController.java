@@ -69,6 +69,7 @@ public class MainController {
 	}
 
 
+	
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Page<Persons> jpaSearch(@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam("sex") final String sex, @RequestParam("email") final String email) {
@@ -77,9 +78,9 @@ public class MainController {
 			page = 1;
 		}
 		Sort sort = new Sort(Direction.ASC, "id");
-
+		
 		Pageable pageable = new PageRequest(page - 1, maxPerPage, sort);
-
+		
 		Page<Persons> pagination =  personsRepository.findAll(new Specification<Persons>() {
 			@Override
 			public Predicate toPredicate(Root<Persons> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
@@ -90,19 +91,19 @@ public class MainController {
 				if (StringUtils.isNotBlank(email)) {
 					predicatList.add(cb.like(root.get("email"), "%" + email + "%"));
 				}
-
+				
 				Predicate[] arrayPredicates = new Predicate[predicatList.size()];
 				return cb.and(predicatList.toArray(arrayPredicates));
 			}
 		}, pageable);
-
-		System.out.println("num:" + pagination.getNumber());
-		System.out.println("size:" + pagination.getSize());
-		System.out.println("content:" + pagination.getContent());
-		System.out.println("total page:" + pagination.getTotalPages());
-		System.out.println("total Elements:" + pagination.getTotalElements());
-		System.out.println("hasNext:" + pagination.hasNext());
-
+		
+//		System.out.println("num:" + pagination.getNumber());
+//		System.out.println("size:" + pagination.getSize());
+//		System.out.println("content:" + pagination.getContent());
+//		System.out.println("total page:" + pagination.getTotalPages());
+//		System.out.println("total Elements:" + pagination.getTotalElements());
+//		System.out.println("hasNext:" + pagination.hasNext());
+		
 		return new PageNumber<>(pagination.getContent(), pageable, pagination.getTotalElements());
 		
 	}

@@ -51,18 +51,18 @@ locale.use(lang);
 
 
 // eslint-disable-next-line no-new
-new Vue({
-    el: '#app',
-    render: h => h(App)
-});
-
-//var vm =new Vue({
+//new Vue({
 //    el: '#app',
-//    router:new VueRouter({
-//    	routes:[
-//    		{ path: '/', redirect: 'persons' },
-//    		{ path: '/persons', name:'persons',  component: app},
-//    	]
-//    })
+//    render: h => h(App)
 //});
+
+var vm =new Vue({
+    el: '#app',
+    router:new VueRouter({
+    	routes:[
+    		{ path: '/', redirect: 'persons' },
+    		{ path: '/persons', name:'persons',  component: App},
+    	]
+    })
+});
 
