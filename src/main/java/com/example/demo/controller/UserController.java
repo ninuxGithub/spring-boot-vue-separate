@@ -1,24 +1,12 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,16 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.bean.PageNumber;
 import com.example.demo.bean.User;
 import com.example.demo.repository.UserRepository;
 
 @RestController
-public class UserController extends BaseAction {
+public class UserController extends BaseController<User> {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserRepository userRepository;
 
+	@SuppressWarnings("serial")
 	@RequestMapping(value = "/userinfo", method = { RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Page<User> getUsers(@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "per_page", required = false) Integer perPage, 
@@ -43,30 +31,14 @@ public class UserController extends BaseAction {
 			@RequestParam("phone") final String phone, 
 			@RequestParam("username") final String username,
 			@RequestParam("sorts") String sortType) {
-		logger.info("user info...");
-		if (page == null) {
-			page = 1;
-		}
-		Sort sort =null;
-		Direction direction = Direction.ASC;
-		if(StringUtils.isBlank(sortType)) {
-			sort = new Sort(direction, "id");
-		}else {
-			if(sortType.startsWith("-")) {
-				direction = Direction.DESC;
-				sortType = sortType.substring(1);
-			}else{
-				direction = Direction.ASC;
-			}
-			sort = new Sort(direction, sortType);
-		}
-		logger.info("sort field :{}", sortType);
-		Pageable pageable = new PageRequest(page - 1, perPage == null?maxPerPage:perPage, sort);
-		Page<User> pagination = null;
-		pagination = queryPagination(name, phone, username, pageable);
-		return new PageNumber<>(pagination.getContent(), pageable, pagination.getTotalElements());
+		return queryPagination(page, perPage, sortType, new HashMap<String,Object>() {{
+			put("name", name);
+			put("phone", phone);
+			put("username", username);
+		}},UserRepository.class);
 
 	}
+	
 	@RequestMapping(value = "/userinfo", method = {RequestMethod.POST }, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void saveUser(
 			@RequestParam(value = "checkpass",required=false) final String checkpass,
@@ -115,29 +87,5 @@ public class UserController extends BaseAction {
 		for (String id : ids) {
 			userRepository.delete(id);
 		}
-	}
-
-	private Page<User> queryPagination(final String name, final String phone, final String username,
-			Pageable pageable) {
-		Page<User> pagination;
-		pagination = userRepository.findAll(new Specification<User>() {
-			@Override
-			public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				List<Predicate> predicatList = new ArrayList<>();
-				if (StringUtils.isNotBlank(name)) {
-					predicatList.add(cb.like(root.get("name"), "%" + name + "%"));
-				}
-				if (StringUtils.isNotBlank(phone)) {
-					predicatList.add(cb.like(root.get("phone"), "%" + phone + "%"));
-				}
-				if (StringUtils.isNotBlank(username)) {
-					predicatList.add(cb.like(root.get("username"), "%" + username + "%"));
-				}
-
-				Predicate[] arrayPredicates = new Predicate[predicatList.size()];
-				return cb.and(predicatList.toArray(arrayPredicates));
-			}
-		}, pageable);
-		return pagination;
 	}
 }
