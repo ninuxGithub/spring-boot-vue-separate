@@ -80,6 +80,12 @@
 
 ### element-ui fileupload
 文件上组件的使用，以及spring-boot 后台对文件上传的处理
+
+### vue 组件的变量传递，组件的通信
+可以参考StudentTable.vue ,SearchStudent.vue, 重点在
+ 'keywords': 'filterResultData'
+ 收到vue的监控，如果搜索的变量发送了改变，那么就会触发filterResultData，进行搜索返回分页的结果
+ 再通过Even发送给StudentTable.vue组件，实现了变量的传递，从而实现了组件的通信
 	
 ### 效果
 ![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)
