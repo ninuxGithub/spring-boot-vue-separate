@@ -54,6 +54,9 @@ public class BaseController<T> {
 	@SuppressWarnings({ "static-access", "unchecked" })
 	public Page<T> queryPagination(Integer page, Integer perPage, String sortType, Map<String, Object> params,
 			Class<?> beanClass) {
+		if(beanClass ==null) {
+			throw new RuntimeException("[queryPagination] beanClass is required!");
+		}
 		if (page == null) {
 			page = 1;
 		}
