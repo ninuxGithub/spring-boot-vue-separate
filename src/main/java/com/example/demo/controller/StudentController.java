@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,20 +51,31 @@ public class StudentController extends BaseController<Student> {
 	public void saveStudent(@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "number", required = false) String number,
-			@RequestParam(value = "score", required = false) Double score) {
+			@RequestParam(value = "score", required = false) Double score,
+			@RequestParam(value = "createTime", required = false) Date createTime,
+			@RequestParam(value = "hobby", required = false) String hobby,
+			@RequestParam(value = "active", required = false) Integer active) {
 		logger.info("save Student...");
-		studentRepository.save(new Student(id, name, number, score));
+		System.out.println(active);
+		System.out.println(createTime);
+		studentRepository.save(new Student(id, name, number, score,createTime,hobby,active));
 	}
 	@RequestMapping(value = "/studentinfo", method = {RequestMethod.PATCH }, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void modifyStudent(@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "number", required = false) String number,
-			@RequestParam(value = "score", required = false) Double score) {
+			@RequestParam(value = "score", required = false) Double score,
+			@RequestParam(value = "createTime", required = false) Date createTime,
+			@RequestParam(value = "hobby", required = false) String hobby,
+			@RequestParam(value = "active", required = false) Integer active) {
 		logger.info("update Student...");
 		Student stu = studentRepository.findOne(id);
 		stu.setName(name);
 		stu.setNumber(number);
 		stu.setScore(score);
+		stu.setCreateTime(createTime);
+		stu.setHobby(hobby);
+		stu.setActive(active);
 		studentRepository.save(stu);
 	}
 	
@@ -75,6 +91,18 @@ public class StudentController extends BaseController<Student> {
 		logger.info("delete Students...");
 		for (String id : ids) {
 			studentRepository.delete(id);
+		}
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
