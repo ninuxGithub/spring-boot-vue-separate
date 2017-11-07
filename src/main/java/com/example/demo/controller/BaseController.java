@@ -59,7 +59,7 @@ public class BaseController<T> {
 		if (page == null) {
 			page = 1;
 		}
-		Sort sort = null;
+		Sort sort ;
 		Direction direction = Direction.ASC;
 		if (StringUtils.isBlank(sortType)) {
 			sort = new Sort(direction, "id");
@@ -76,6 +76,22 @@ public class BaseController<T> {
 		JpaSpecificationExecutor<T> bean = (JpaSpecificationExecutor<T>) springUtil.getBean(beanClass);
 		logger.info("sort field :{} queryPagination run...", sortType);
 		// 开始分页
+		//Lambda
+		Page<T> pagination = bean.findAll((Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb)->{
+			List<Predicate> predicatList = new ArrayList<>();
+			for (String field : params.keySet()) {
+				Object value = params.get(field);
+				if (null != value && StringUtils.isNotBlank(value.toString())) {
+					//有些字段是不可以采用like的 例如Double ...
+					predicatList.add(cb.like(root.get(field), "%" + value + "%"));
+				}
+			}
+			Predicate[] arrayPredicates = new Predicate[predicatList.size()];
+			return cb.and(predicatList.toArray(arrayPredicates));
+		},pageable);
+
+
+		/*
 		Page<T> pagination = bean.findAll(new Specification<T>() {
 			@Override
 			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
@@ -91,6 +107,7 @@ public class BaseController<T> {
 				return cb.and(predicatList.toArray(arrayPredicates));
 			}
 		}, pageable);
+		 */
 		// 对分页的PageNumber 进行调整
 		return new PageNumber<>(pagination.getContent(), pageable, pagination.getTotalElements());
 	}
