@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -71,8 +72,8 @@ public class MainController {
 
 	
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<Persons> jpaSearch(@RequestParam(value = "page", required = false) Integer page,
-			@RequestParam("sex") final String sex, @RequestParam("email") final String email) {
+	public Page<Persons> jpaSearch(HttpSession session,@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "sex",required=false) final String sex, @RequestParam(value="email",required=false) final String email) {
 		logger.info("jpaSearch");
 		if (page == null) {
 			page = 1;

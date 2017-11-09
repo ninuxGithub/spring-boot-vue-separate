@@ -81,7 +81,8 @@ public class LambdaTest {
 
     }
 
-    public static void filter(List<String> list, Predicate predicate) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void filter(List<String> list, Predicate predicate) {
         list.stream().filter((l) -> (predicate.test(l))).forEach((l) -> {
             System.out.println(l);
         });

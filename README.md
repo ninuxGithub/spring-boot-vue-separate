@@ -86,6 +86,20 @@
  'keywords': 'filterResultData'
  收到vue的监控，如果搜索的变量发送了改变，那么就会触发filterResultData，进行搜索返回分页的结果
  再通过Even发送给StudentTable.vue组件，实现了变量的传递，从而实现了组件的通信
+ 
+ 
+### filter,interceptor,listener 注解实现的方式
+filter:
+	采用注解@Order(value = Ordered.HIGHEST_PRECEDENCE)@WebFilter(urlPatterns = "/*", filterName = "apiFilter") , 实现接口javax.servlet.Filter
+
+interceptor:
+	需要实现接口：org.springframework.web.servlet.HandlerInterceptor，并且在webmvconfig 中的addInterceptors方法中注入拦截器
+
+listener:
+	javax.servlet.http.HttpSessionListener--session级别（经过采坑，requestMapping 方法需要有HttpSession的入参，才会得到监听）
+	javax.servlet.ServletContextListener--servlet容器配置
+	javax.servlet.ServletRequestListener--request级别的监听
+	另外还有一个重要的点就是需要在applicaton中加入注解@ServletComponentScan,扫描组件
 	
 ### 效果
 ![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)

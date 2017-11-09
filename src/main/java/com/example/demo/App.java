@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
@@ -25,6 +26,7 @@ import com.example.demo.repository.PersonsRepository;
 
 @SpringBootApplication
 @Configuration  
+@ServletComponentScan
 @EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) 
 public class App implements CommandLineRunner{
 

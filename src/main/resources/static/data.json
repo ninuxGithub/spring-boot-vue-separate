@@ -1,0 +1,463 @@
+{
+    "success": true,
+    "message": "",
+    "data": {
+        "show_type": "knowledgegraph",
+        "data": {
+            "query_tpl": "{node_id}",
+            "result": {
+                "fields": [{
+                    "field": "stkcode",
+                    "fieldType": "code",
+                    "renameKey": "__code"
+                },
+                {
+                    "field": "nodes",
+                    "fieldType": "ARRAY",
+                    "renameKey": "nodes"
+                },
+                {
+                    "field": "edges",
+                    "fieldType": "ARRAY",
+                    "renameKey": "edges"
+                },
+                {
+                    "field": "events",
+                    "fieldType": "ARRAY",
+                    "renameKey": "events"
+                },
+                {
+                    "field": "params",
+                    "fieldType": "ARRAY",
+                    "renameKey": "params"
+                }],
+                "data": [{
+                    "__code": "600283",
+                    "nodes": [{
+                        "_id": "575f5b8654e9886dc12f2149",
+                        "node_domain": "\u4f01\u4e1a",
+                        "node_id": "600283",
+                        "node_name": "\u94b1\u6c5f\u6c34\u5229\n600283",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 1
+                    },
+                    {
+                        "_id": "575f583954e9886dc12e9d84",
+                        "node_domain": "\u4f01\u4e1a",
+                        "node_id": "000961",
+                        "node_name": "\u4e2d\u5357\u5efa\u8bbe\n000961",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 4
+                    },
+                    {
+                        "_id": "575f58d754e9886dc12eb63b",
+                        "node_domain": "\u4f01\u4e1a",
+                        "node_id": "000786",
+                        "node_name": "\u5317\u65b0\u5efa\u6750\n000786",
+                        "node_property": [],
+                        "expire_day_cnt": 10,
+                        "group": 4
+                    },
+                    {
+                        "_id": "58dd2bfc54e988330fb60f1c",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "58dd1ff154e988330fb5fb13",
+                        "node_name": "\u6c34\u4f9b\u7ed9\u53ca\u5904\u7406\u4e1a\u52a1",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "58dd2bfc54e988330fb60f1a",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "58dd1ff154e988330fb5fb12",
+                        "node_name": "\u6750\u6599\u548c\u914d\u4ef6\u9500\u552e",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "5747177254e98807fb4be869",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "573330fc023f472b87b85d56",
+                        "node_name": "\u96c6\u6210\u623f\u5c4b",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "5747196154e98807fb4c7944",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "5739d22b7d8035632eefff8e",
+                        "node_name": "\u6750\u6599\u548c\u914d\u4ef6",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "58dd2bfc54e988330fb60f1e",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "58dd1ff154e988330fb5fb14",
+                        "node_name": "\u7ba1\u9053\u5b89\u88c5\u4e1a\u52a1",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "5747174a54e98807fb4bdd39",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "5739c285023f473720fdeb10",
+                        "node_name": "\u8584\u677f\u94a2\u9aa8\u623f\u5c4b",
+                        "node_property": [],
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    },
+                    {
+                        "_id": "574716cd54e98807fb4bb653",
+                        "node_domain": "\u4ea7\u54c1",
+                        "node_id": "5739d1bb7d8035632eefe33b",
+                        "node_name": "\u623f\u5c4b",
+                        "expire_day_cnt": -1,
+                        "group": 2
+                    }],
+                    "edges": [{
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1e",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb9903b",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "574716cd54e98807fb4bb653",
+                        "score": 0,
+                        "_id": "58e1224254e9886f3eb94a56",
+                        "from_node": "575f583954e9886dc12e9d84",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "574716cd54e98807fb4bb653",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99037",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-03-28T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747177254e98807fb4be869",
+                        "score": 0,
+                        "_id": "58d9449254e98853e0b0f19f",
+                        "from_node": "574716cd54e98807fb4bb653",
+                        "relation_name": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "from_label": "\u4ea7\u54c1"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1a",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99039",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1c",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb9903a",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-03-28T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747174a54e98807fb4bdd39",
+                        "score": 0,
+                        "_id": "58d9442254e98853e0b0d921",
+                        "from_node": "574716cd54e98807fb4bb653",
+                        "relation_name": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "from_label": "\u4ea7\u54c1"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747196154e98807fb4c7944",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99038",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1a",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99039",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1e",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb9903b",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747174a54e98807fb4bdd39",
+                        "score": 0,
+                        "_id": "58e1221e54e9886f3eb94558",
+                        "from_node": "575f58d754e9886dc12eb63b",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-04T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "574716cd54e98807fb4bb653",
+                        "score": 0,
+                        "_id": "58e2745b54e98861f1aa1ec7",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-03-28T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747174a54e98807fb4bdd39",
+                        "score": 0,
+                        "_id": "58d9442254e98853e0b0d921",
+                        "from_node": "574716cd54e98807fb4bb653",
+                        "relation_name": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "from_label": "\u4ea7\u54c1"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-03-28T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747177254e98807fb4be869",
+                        "score": 0,
+                        "_id": "58d9449254e98853e0b0f19f",
+                        "from_node": "574716cd54e98807fb4bb653",
+                        "relation_name": "\u4e0b\u4f4d\u4ea7\u54c1",
+                        "from_label": "\u4ea7\u54c1"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "5747196154e98807fb4c7944",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99038",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "574716cd54e98807fb4bb653",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb99037",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    },
+                    {
+                        "last_modify_time": {
+                            "$date": "2017-04-03T00:00:00.000Z"
+                        },
+                        "expire_day_cnt": -1,
+                        "to_label": "\u4ea7\u54c1",
+                        "expire_time": {
+                            "$date": "1972-09-27T00:00:00.000Z"
+                        },
+                        "relation_property": [],
+                        "to_node": "58dd2bfc54e988330fb60f1c",
+                        "score": 0,
+                        "_id": "58e1242754e9886f3eb9903a",
+                        "from_node": "575f5b8654e9886dc12f2149",
+                        "relation_name": "\u4e3b\u8425\u4ea7\u54c1",
+                        "from_label": "\u516c\u53f8"
+                    }],
+                    "params": [{
+                        "field": "maxStock",
+                        "name": "\u4e2a\u80a1\u6570\u91cf"
+                    },
+                    {
+                        "field": "zycp",
+                        "name": "\u4e3b\u8425\u4ea7\u54c1"
+                    },
+                    {
+                        "field": "sy",
+                        "name": "\u4e0a\u6e38"
+                    },
+                    {
+                        "field": "xy",
+                        "name": "\u4e0b\u6e38"
+                    },
+                    {
+                        "field": "xwcp",
+                        "name": "\u4e0b\u4f4d\u4ea7\u54c1"
+                    },
+                    {
+                        "field": "swcp",
+                        "name": "\u4e0a\u4f4d\u4ea7\u54c1"
+                    },
+                    {
+                        "field": "glgs",
+                        "name": "\u5173\u8054\u516c\u53f8"
+                    }],
+                    "events": []
+                }],
+                "meta": {
+                    "throw_new": true
+                }
+            },
+            "baseUrl": "\/diag\/block-detail?pid=11666&codes=600283&codeType=stock&info=%7B%22view%22%3A%7B%22nolazy%22%3A1%2C%22parseArr%22%3A%7B%22_v%22%3A%22new%22%2C%22dateRange%22%3A%5B%5D%2C%22staying%22%3A%5B%5D%2C%22queryCompare%22%3A%5B%5D%2C%22comparesOfIndex%22%3A%5B%5D%7D%2C%22asyncParams%22%3A%7B%22tid%22%3A137%2C%22my%22%3A0%2C%22ordersignal%22%3A0%2C%22w%22%3Anull%2C%22cid%22%3A%22p5upb3v7etkvp0co6bra0b3f441509516896%22%7D%7D%7D",
+            "block_title": "\u4ea7\u54c1\u56fe\u8c31",
+            "explain": {
+                "summary": "\u3000\u3000\u7528\u6765\u67e5\u8be2\u516c\u53f8\u4e3b\u8425\u4ea7\u54c1\u3001\u4ea7\u54c1\u4e0a\u4e0b\u6e38\u3001\u4ea7\u54c1\u4e0a\u4e0b\u4f4d\u7b49\u5173\u7cfb\u7684...",
+                "url": "http:\/\/www.iwencai.com\/yike\/detail\/auid\/04809a430d0d9746"
+            },
+            "praiseInfo": {
+                "praise": true,
+                "usefulTotal": "0",
+                "uselessTotal": "0"
+            }
+        },
+        "pid": "11666",
+        "title": "\u4ea7\u54c1\u56fe\u8c31"
+    }
+}
