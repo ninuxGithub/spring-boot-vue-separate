@@ -23,6 +23,7 @@ import com.example.demo.bean.Student;
 import com.example.demo.repository.StudentRepository;
 
 @RestController
+@RequestMapping(value="/api")
 public class StudentController extends BaseController<Student> {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
