@@ -26,8 +26,7 @@ $(document).ready(function () {
             {"source": 0, "target": 7},
             {"source": 7, "target": 5},
             {"source": 0, "target": 9},
-            {"source": 9, "target": 10},
-            {"source": 4, "target": 5}
+            {"source": 9, "target": 10}
         ]
     };
     
