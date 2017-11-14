@@ -101,6 +101,25 @@ listener:
 	javax.servlet.ServletRequestListener--request级别的监听
 	另外还有一个重要的点就是需要在applicaton中加入注解@ServletComponentScan,扫描组件
 	
+### axois 发送post get
+```javascript
+	//get
+	axios.get(this.url,{params:this.filter}).then((response) =>{
+		this.students = response.data.content;
+	}).catch((response)=>{
+		this.$message.error('message');
+	});
+   		
+   	//axios post 需要借助qs 将参数sringify
+    var qs = require('qs');
+    axios.post('/api/changeColor',qs.stringify({'color':color})).then(function(response) {
+
+    }).catch(function(error) {
+
+    });	
+   		
+```
+	
 ### 效果
 ![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)
 	

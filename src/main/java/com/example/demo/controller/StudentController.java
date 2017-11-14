@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -103,6 +106,36 @@ public class StudentController extends BaseController<Student> {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="/changeColor", method= {RequestMethod.POST,RequestMethod.GET})
+	public void changeColor(@RequestParam("color") String color) {
+		color = StringUtils.isBlank(color)?"#cb39f9":color;
+		StringBuffer sb = new StringBuffer();
+		sb.append("$themeColor: "+color+" !default;\r\n");
+		sb.append("$--color-primary: $themeColor;\r\n");
+		sb.append("$--font-path: '../node_modules/element-ui/lib/theme-chalk/fonts';\r\n");
+		sb.append("@import \"../node_modules/element-ui/packages/theme-chalk/src/index\";");
+		
+		write2File("E:\\dev\\IntellijSpace\\vue-irp\\src\\element-variables.scss", sb.toString());
+		
+	}
+	
+	public void write2File(final String strFilename, final String strBuffer) {
+		try {
+			// 创建文件对象
+			File fileText = new File(strFilename);
+			// 向文件写入对象写入信息
+			FileWriter fileWriter = new FileWriter(fileText);
+
+			// 写文件
+			fileWriter.write(strBuffer);
+			// 关闭
+			fileWriter.close();
+		} catch (IOException e) {
+			//
 			e.printStackTrace();
 		}
 	}
