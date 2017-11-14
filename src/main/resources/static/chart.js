@@ -1,4 +1,13 @@
-
+/**
+ * nodes :
+ * 		name：节点的title，
+ * 		group:围绕中心的层数，一个组合同一个颜色
+ * 		index:区分的标记
+ * 
+ * links:
+ * 		source:源
+ * 		target:链接的目的地
+ */
 $(document).ready(function () {
 	var renderId ="#main_2";
 	
@@ -8,9 +17,9 @@ $(document).ready(function () {
             {"name": "内蒙古", "group": 2, "index": 1},
             {"name": "猫咪", "group": 3, "index": 2},
             {"name": "四川", "group": 2, "index": 3},
-            {"name": "棕熊", "group": 3, "index": 4},
+            {"name": "棕熊", "group": 2, "index": 4},
             {"name": "臭豆腐", "group": 3, "index": 5},
-            {"name": "小猪猪", "group": 3, "index": 6},
+            {"name": "小猪猪", "group": 2, "index": 6},
             {"name": "湖南", "group": 2, "index": 7},
             {"name": "大熊猫", "group": 3, "index": 8},
             {"name": "北京", "group": 2, "index": 9},
