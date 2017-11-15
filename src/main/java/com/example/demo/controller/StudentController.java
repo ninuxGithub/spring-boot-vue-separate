@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bean.Student;
 import com.example.demo.repository.StudentRepository;
+
 
 @RestController
 @RequestMapping(value="/api")
@@ -120,7 +124,54 @@ public class StudentController extends BaseController<Student> {
 		sb.append("@import \"../node_modules/element-ui/packages/theme-chalk/src/index\";");
 		
 		write2File("E:\\dev\\IntellijSpace\\vue-irp\\src\\element-variables.scss", sb.toString());
-		
+		write2File("E:/dev/IntellijSpace/vue-irp/src/theme-default.scss", color);
+		System.err.println("changeColor finished..");
+	}
+
+	@RequestMapping(value = "/defaultTheme", method = { RequestMethod.POST, RequestMethod.GET })
+	public Map<String,String> themeDefault() {
+		// 创建文件对象
+		File fileText = new File("E:/dev/IntellijSpace/vue-irp/src/theme-default.scss");
+		// 向文件写入对象写入信息
+		BufferedReader breader=null;
+		FileReader fileReader = null;
+		String readLine=null;
+		try {
+			fileReader = new FileReader(fileText);
+			breader = new BufferedReader(fileReader);
+			readLine = breader.readLine();
+//			while(true){
+//				readLine = breader.readLine();
+//			    if(readLine == null){
+//			        break;
+//			    }
+//			    System.out.println(readLine);
+//			}
+			System.err.println(readLine);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(null !=  fileReader) {
+				try {
+					fileReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if(null !=  breader) {
+				try {
+					breader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		Map<String, String> map = new HashMap<>();
+		map.put("color", readLine==null?"#cb39f9":readLine);
+		return map;
+
 	}
 	
 	public void write2File(final String strFilename, final String strBuffer) {
