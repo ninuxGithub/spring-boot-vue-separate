@@ -66,7 +66,7 @@ public class JFreeChartDemoCombined2 {
 		// p.setRangeGridlinePaint(ChartColor.red);
 		// 对X轴做操作
 		DateAxis domainAxis = (DateAxis) plot.getDomainAxis(); //x轴设置
-	    domainAxis.setTickUnit(new DateTickUnit(DateTickUnit.DAY, 2, new SimpleDateFormat("MM-dd")));
+	    domainAxis.setTickUnit(new DateTickUnit(DateTickUnit.DAY, 40, new SimpleDateFormat("MM-dd")));
 	    //DateAxis domainAxis = (DateAxis) plot.getDomainAxis();
 	    domainAxis.setTickLabelFont(new Font("黑体", Font.PLAIN, 13));// 设置X轴坐标上的文字
 	    domainAxis.setLabelFont(new Font("黑体", Font.PLAIN, 15)); // 设置X轴的标题文字
@@ -131,7 +131,7 @@ public class JFreeChartDemoCombined2 {
 
 		double value = 100.0;
 		
-		for (int i = 0; i < 80; i++) {
+		for (int i = 0; i < 800; i++) {
 			try {
 				value = value + Math.random() - 0.5;
 				timeSeries1.add(current, new Double(value));
@@ -139,16 +139,16 @@ public class JFreeChartDemoCombined2 {
 					value = 100.0d;
 				}
 				
-				if(i % 4 ==0 || i == 79) {
+				if(i % 40 ==0 || i == 799) {
 					timeSeries2.add(current, new Double(value));
 				}
-				if(i % 5 ==0 || i == 79) {
+				if(i % 50 ==0 || i == 799) {
 					timeSeries3.add(current, new Double(value));
 				}
-				if(i % 6 ==0 || i == 79) {
+				if(i % 60 ==0 || i == 799) {
 					timeSeries4.add(current, new Double(value));
 				}
-				if(i % 8 ==0 || i == 79) {
+				if(i % 80 ==0 || i == 799) {
 					timeSeries5.add(current, new Double(value));
 				}
 				current = (Day) current.next();
