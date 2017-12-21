@@ -114,48 +114,61 @@
 			<artifactId>jcommon</artifactId>
 			<version>1.0.14</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>jfree</groupId> -->
-<!-- 			<artifactId>jfreechart</artifactId> -->
-<!-- 			<version>1.0.13</version> -->
-<!-- 		</dependency> -->
+
+		<!-- jfreechart 旧版本 -->
+		<!-- <dependency> -->
+		<!-- <groupId>jfree</groupId> -->
+		<!-- <artifactId>jfreechart</artifactId> -->
+		<!-- <version>1.0.13</version> -->
+		<!-- </dependency> -->
 
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>jfree</groupId> -->
-<!-- 			<artifactId>jcommon</artifactId> -->
-<!-- 			<version>1.0.16</version> -->
-<!-- 		</dependency> -->
-		
+		<!-- <dependency> -->
+		<!-- <groupId>jfree</groupId> -->
+		<!-- <artifactId>jcommon</artifactId> -->
+		<!-- <version>1.0.16</version> -->
+		<!-- </dependency> -->
+
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
+
+
+
+
 	</dependencies>
 
 
-<!-- 	<repositories> -->
-<!-- 		<repository> -->
-<!-- 			<id>repository.jboss.org-public</id> -->
-<!-- 			<name>JBoss repository</name> -->
-<!-- 			<url>https://repository.jboss.org/nexus/content/groups/public</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>maven-restlet</id> -->
-<!-- 			<name>Public online Restlet repository</name> -->
-<!-- 			<url>http://maven.restlet.org</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>repo.pentaho.org</id> -->
-<!-- 			<name>repo.pentaho.org-snapshots</name> -->
-<!-- 			<url>repository.pentaho.org/artifactory/repo</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>aliyunmaven</id> -->
-<!-- 			<url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
-<!-- 		</repository> -->
-<!-- 	</repositories> -->
+	<!-- <repositories> -->
+	<!-- <repository> -->
+	<!-- <id>repository.jboss.org-public</id> -->
+	<!-- <name>JBoss repository</name> -->
+	<!-- <url>https://repository.jboss.org/nexus/content/groups/public</url> -->
+	<!-- </repository> -->
+	<!-- <repository> -->
+	<!-- <id>maven-restlet</id> -->
+	<!-- <name>Public online Restlet repository</name> -->
+	<!-- <url>http://maven.restlet.org</url> -->
+	<!-- </repository> -->
+	<!-- <repository> -->
+	<!-- <id>repo.pentaho.org</id> -->
+	<!-- <name>repo.pentaho.org-snapshots</name> -->
+	<!-- <url>repository.pentaho.org/artifactory/repo</url> -->
+	<!-- </repository> -->
+	<!-- <repository> -->
+	<!-- <id>aliyunmaven</id> -->
+	<!-- <url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
+	<!-- </repository> -->
+	<!-- </repositories> -->
 
 	<build>
 		<plugins>

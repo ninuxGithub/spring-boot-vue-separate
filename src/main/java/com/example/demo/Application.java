@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.example.demo.bean.Persons;
 import com.example.demo.component.CustomMultipartResolver;
@@ -35,21 +38,17 @@ public class Application implements CommandLineRunner {
 	 * @return
 	 */
 	// 在前台设置了跨域访问
-
-	// @Bean
-	// public WebMvcConfigurer corsConfigurer() {
-	// return new WebMvcConfigurerAdapter() {
-	// @Override
-	// public void addCorsMappings(CorsRegistry registry) {
-	// registry.addMapping("/**")
-	// .allowedOrigins(ALL)
-	// .allowedMethods(ALL)
-	// .allowedHeaders(ALL)
-	// .allowCredentials(true);
-	// }
-	// };
-	// }
-
+//
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurerAdapter() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**").allowedOrigins(ALL).allowedMethods(ALL).allowedHeaders(ALL)
+//						.allowCredentials(true);
+//			}
+//		};
+//	}
 
 	@Bean(name = "multipartResolver")
 	public MultipartResolver multipartResolver() {

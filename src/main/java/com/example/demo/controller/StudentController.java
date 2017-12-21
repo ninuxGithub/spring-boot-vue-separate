@@ -125,7 +125,7 @@ public class StudentController extends BaseController<Student> {
 		
 		write2File("E:\\dev\\IntellijSpace\\vue-irp\\src\\element-variables.scss", sb.toString());
 		write2File("E:/dev/IntellijSpace/vue-irp/src/theme-default.scss", color);
-		System.err.println("changeColor finished..");
+		System.err.println("changeColor finished: " + color);
 	}
 
 	@RequestMapping(value = "/defaultTheme", method = { RequestMethod.POST, RequestMethod.GET })
