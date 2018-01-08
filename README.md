@@ -122,6 +122,95 @@ listener:
 	
 ### 效果
 ![img](https://github.com/ninuxGithub/spring-boot-vue-separate/blob/master/pic.png)
+
+
+
+##Nginx 配置文件
+	#Nginx所用用户和组，window下不指定
+	#user  niumd niumd;
+	#工作的子进程数量（通常等于CPU数量或者2倍于CPU）
+	worker_processes  2;
+	#错误日志存放路径
+	#error_log  logs/error.log;
+	#error_log  logs/error.log  notice;
+	error_log  logs/error.log  info;
+	#指定pid存放文件
+	pid        logs/nginx.pid;
+	events {
+		#使用网络IO模型linux建议epoll，FreeBSD建议采用kqueue，window下不指定。
+		#use epoll;
+		#允许最大连接数
+		worker_connections 1024;
+	}
+	http {
+	    include       mime.types;
+		default_type  application/octet-stream;
+		#定义日志格式
+		#log_format main '$remote_addr - $remote_user [$time_local] $request '
+		#'"$status" $body_bytes_sent "$http_referer" '
+		#'"$http_user_agent" "$http_x_forwarded_for"';
+		#access_log off;
+		access_log  logs/access.log;
+	    client_header_timeout 3m;
+	    client_body_timeout 3m;
+	    send_timeout 3m;
+	    client_header_buffer_size 1k;
+	    large_client_header_buffers 4 4k;
+	    sendfile on;
+	    tcp_nopush on;
+	    tcp_nodelay on;
+		#keepalive_timeout 75 20;
+	    include gzip.conf;
+	    upstream backend_server {
+			#根据ip计算将请求分配各那个后端tomcat，许多人误认为可以解决session问题，其实并不能。
+			#同一机器在多网情况下，路由切换，ip可能不同
+			#ip_hash;
+	        server localhost:8000 weight=5;
+			server localhost:9000 weight=5;
+	    }
+	
+	    #访问nginx自带的页面nginx首页地址：http://www.nginxserver.com:8080/
+	    server {
+	    	listen 8080;
+	        server_name  www.nginxserver.com;
+	        index index.html index.htm;
+	        root html;
+	        location /{
+	    
+	        }
+	    }
+	
+	    #通过代理访问后台的服务器：http://www.nginxserver.com/
+	    server {
+	        listen 80;
+	        server_name  www.nginxserver.com;
+	        #index index.html index.htm;
+	        #root html;
+			
+	        location / {
+	            #proxy_connect_timeout 3;
+	            #proxy_send_timeout 30;
+	            #proxy_read_timeout 30;
+				
+	            proxy_pass http://backend_server;
+				
+				#proxy config
+	            proxy_redirect          off;
+				proxy_set_header        Host $host:$server_port;
+				proxy_set_header        X-Real-IP $remote_addr;
+				proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+	            client_max_body_size    10m;
+				client_body_buffer_size 128k;
+				proxy_connect_timeout   300;
+				proxy_send_timeout      300;
+				proxy_read_timeout      300;
+				proxy_buffer_size       4k;
+				proxy_buffers           4 32k;
+				proxy_busy_buffers_size 64k;
+				proxy_temp_file_write_size 64k;
+	        }
+	    }
+	}
 	
 	
 
