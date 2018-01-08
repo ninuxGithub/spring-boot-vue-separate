@@ -218,4 +218,8 @@ listener:
 server_name  www.nginxserver.com 需要配置到host里面	
 
 
+## select , poll , epoll 的区别
+[博客链接](https://www.cnblogs.com/Anker/p/3265058.html)
+
+
 	
