@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,23 @@ public class UserController extends BaseController<User> {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserRepository userRepository;
+	
+	/**
+	 * 可以启动多个server在不同的端口， nginx 作为负载均衡
+	 * 
+	 * 正向代理： 即所谓的代理， 例如google.com 无法访问，可以通过代理服务器来访问谷歌网站的代理即为正向代理
+	 * 反向代理：用户访问一个站点，例如http://www.abc.com/readme.md , 但是  www.abc.com 跟没有readme.md对应的资源，
+	 * 那么这个服务器就去请求别的网站获取readme.md 这个资源的行为叫做反向代理
+	 * 
+	 */
+	@Value("${server.port}")
+	private int port;
+	
+	@RequestMapping(value= {"/","/index"})
+	public String index() {
+		logger.info("visite port is {}",port);
+		return "nginx come to server backend :"+ port;
+	}
 
 	@SuppressWarnings("serial")
 	@RequestMapping(value = "/userinfo", method = { RequestMethod.GET }, produces = MediaType.APPLICATION_JSON_VALUE)
