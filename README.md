@@ -217,6 +217,53 @@ listener:
 
 server_name  www.nginxserver.com 需要配置到host里面	
 
+[参考]
+nginx反向代理配置keepalive
+keepalive for HTTP - Module ngx_http_core_module
+ 
+2. Tomcat
+conf/server.xml：
+    <!-- 
+        maxThreads：由此连接器创建的最大请求处理线程数，这决定可同时处理的最大并发请求数（默认为200）
+        minSpareThreads：保持运行状态的最小线程数（默认为10）
+        acceptCount：接收传入的连接请求的最大队列长度（默认队列长度为100）
+        
+        connectionTimeout：在接收一条连接之后，连接器将会等待请求URI行的毫秒数（默认为60000，60秒）
+        maxConnections：在任何给定的时间，服务器能接收和处理的最大连接数（NIO的默认值为10000）
+        keepAliveTimeout：在关闭这条连接之前，连接器将等待另一个HTTP请求的毫秒数（默认使用connectionTimeout属性值）
+        maxKeepAliveRequests：在该连接被服务器关闭之前，可被流水线化的最大HTTP请求数（默认为100）
+        
+        enableLookups：启用DNS查询（默认是DNS查询被禁用）
+        compression：连接器是否启用HTTP/1.1 GZIP压缩，为了节省服务器带宽
+        compressionMinSize：指定输出响应数据的最小大小（默认为2048，2KB）
+        compressableMimeType：可使用HTTP压缩的文件类型
+        server：覆盖HTTP响应的Server头信息
+     -->
+    <Connector port="8080" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="768"
+               minSpareThreads="512"
+               acceptCount="128"
+               
+               connectionTimeout="1000"
+               maxConnections="1024"
+               keepAliveTimeout="300000"
+               maxKeepAliveRequests="768"
+               
+               enableLookups="false"
+               URIEncoding="utf-8"
+               redirectPort="8443"
+               compression="on" compressionMinSize="1024" compressableMimeType="text/html,text/xml,text/javascript,text/css,text/plain,application/json,application/xml"
+               server="webserver" />
+ [参考]
+The HTTP Connector - Tomcat 7 Configuration Reference
+ 
+3. Client
+客户端HTTP "Keep-Alive"实现代码，请打开下一行的链接。
+KeepAliveHttpClientsTest -> httpclient-x
+ 
+【结果验证】
+使用 "sudo netstat -antp | grep 80" 监控与Nginx相关的线程状态
+
 
 ## select , poll , epoll 的区别
 [博客链接](https://www.cnblogs.com/Anker/p/3265058.html)
