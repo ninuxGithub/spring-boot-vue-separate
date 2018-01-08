@@ -126,6 +126,7 @@ listener:
 
 
 ##Nginx 配置文件
+
 	#Nginx所用用户和组，window下不指定
 	#user  niumd niumd;
 	#工作的子进程数量（通常等于CPU数量或者2倍于CPU）
