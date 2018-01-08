@@ -213,7 +213,9 @@ listener:
 	    }
 	}
 	
-	
+
+
+server_name  www.nginxserver.com 需要配置到host里面	
 
 
 	
